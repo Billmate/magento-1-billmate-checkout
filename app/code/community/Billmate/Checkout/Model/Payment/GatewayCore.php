@@ -129,6 +129,8 @@ class Billmate_Checkout_Model_Payment_GatewayCore extends Varien_Object
                 ];
             }
         }
+        $shippingAddress->save();
+        $this->getQuote()->collectTotals()->save();
         return $shippingCostData;
     }
 
