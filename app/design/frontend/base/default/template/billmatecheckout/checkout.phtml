@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @var $this Billmate_Checkout_Block_Checkout
+ */
+
+$bmIframeUrl = $this->getBmIframeUrl();
+?>
+<?php echo $this->getChildHtml('checkout.cart'); ?>
+<div id="checkout-loader">
+    <div class="img-loader"></div>
+</div>
+<div class="messages">
+    <?php echo $this->getMessagesBlock() ?>
+</div>
+<div id="checkoutdiv">
+    <iframe id="checkout" src="<?php echo $bmIframeUrl; ?>" style="width: 100%; min-height: 800px; border:none;" sandbox="allow-same-origin allow-scripts allow-modals allow-popups allow-forms allow-top-navigation"></iframe>
+    <div class="billmateoverlay"></div>
+    <div class="billmateloading"></div>
+</div>
+<script>
+    jQuery(window).load(function() {
+        var b_iframe = BillmateIframe.init(<?php echo $this->getJsConfig() ?>);
+    });
+</script>
+
